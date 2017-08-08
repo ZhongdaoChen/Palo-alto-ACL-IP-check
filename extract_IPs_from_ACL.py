@@ -13,7 +13,7 @@ finally:
 fp_ips = open('./all_ips.txt','w')
 fp_subnet = open('./all_subnet.txt','w')
 
-pattern_ip = re.compile(r'\d{1,3}\.\d{1,3}\.\d{1,3}\.[1-9]{1,3}')     # I know it's ugly..bite me
+pattern_ip = re.compile(r'\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}')
 all_ip = list(set(pattern_ip.findall(all_the_text)))    # Find all IPs and delete the repetitive ones, convert to list again
 #print(all_ip)
 for i in range (0, len(all_ip)):
@@ -21,8 +21,6 @@ for i in range (0, len(all_ip)):
     fp_ips.write(all_ip[i] + "|\n")
 print("All IPs in ACL have been extracted to all_ips.txt")
 print("Number of lines:"+ str(len(all_ip)))
-
-print("")
 
 pattern_network = re.compile(r'\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}-\d{1,2}') # The format in ACL is like 172.18.28.100-31
 all_subnet = list(set(pattern_network.findall(all_the_text)))
